@@ -1,0 +1,63 @@
+name: Build HonQii README
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      # Setup python
+      - name: Config python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      
+      # Config pip cache
+      - name: Config python cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            
+      # Install python packages
+      - name: Install python packages
+        run: |
+          python -m pip install -r requirements.txt
+        
+      # Update README file
+      - name: Update README
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |-
+          python readme.py
+      
+      # Commit changed
+      - name: Commit changed
+        run: |-
+          git add .
+          git commit -m "Daily update person readme" || exit 0
+          git push
+        
+      

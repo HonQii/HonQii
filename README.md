@@ -8,6 +8,6 @@
 * <a href='https://notes.honqi.ink/2018/11/07/Cocoa/iOS/LayoutEngine/' target='_blank'>iOS Layout Engine 与 Render Loop</a> - 2018-11-07
 <!-- blog ends -->
 
-[![HonQii's GitHub stats](https://github-readme-stats.vercel.app/api?username=HonQii&show_icons=true&theme=prussian)](https://github.com/anuraghazra/github-readme-stats)
+[![HonQii's GitHub stats](https://github-readme-stats.vercel.app/api?username=HonQii&show_icons=true&theme=prussian)](https://blog.honqi.ink)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=HonQii&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=HonQii&layout=compact)](https://blog.honqi.ink)
